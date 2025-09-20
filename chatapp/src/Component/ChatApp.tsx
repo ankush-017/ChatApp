@@ -12,7 +12,7 @@ interface Response {
   message: string;
 }
 
-const socket: Socket = io("http://localhost:3000");
+const socket: Socket = io(`${import.meta.env.VITE_BACKEND_URL}`);
 
 function ChatApp() {
   const [message, setMessage] = useState("");
