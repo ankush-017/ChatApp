@@ -6,11 +6,17 @@ import dotenv from "dotenv";
 dotenv.config();
 
 const app = express();
-app.use(cors());
+app.use(cors({
+    origin: [
+        "http://localhost:5173",
+        "https://chatapp-iota-green.vercel.app"
+    ],
+    methods: ["GET", "POST"],
+}));
 app.use(express.json());
 
 const server = http.createServer(app); // Create an HTTP server
-const io = new Server(server, {
+const io = new Server(server, { // WebSocket server setup over the existing HTTP server.
   cors: {
     origin: ["http://localhost:5173","https://chatapp-iota-green.vercel.app/"],
     methods: ["GET", "POST"],
