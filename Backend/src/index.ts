@@ -56,7 +56,7 @@ interface Message {
   // Listen for chat messages for room based chat
   socket.on("send_message", (data: Message) => {
     const { roomId, text } = data;
-    console.log(`Message received in room ${roomId}:`, text);
+    console.log(`Message received in room ${roomId}:, text`);
 
     socket.to(roomId).emit("receive_message", data); // Send the exact message object
   });
